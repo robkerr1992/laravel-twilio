@@ -120,7 +120,7 @@ $sdk = $twilio->getClient();
 You can customize tons of things about the call/message, including here it comes from: 
 
 ```php
-$params['from'] = '222-222-2222';
+$params['from'] = '+12223334444';
 
 $twilio->message($to, $message, $mediaUrls, $params);
 ```
@@ -128,7 +128,7 @@ $twilio->message($to, $message, $mediaUrls, $params);
 The same is true for the [call method](https://www.twilio.com/docs/api/voice/call#post-parameters).
 
 ```php
-$params['from'] = '222-222-2222';
+$params['from'] = '+12223334444';
 
 $twilio->call($to, $message, $params);
 ```
