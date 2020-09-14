@@ -7,7 +7,7 @@ Laravel Twilio API Integration
 ## Installation
 
 ```bash
-composer require rksugarfree/twilio
+composer require rksugarfree/laravel-twilio
 ```
 
 #### Facade
