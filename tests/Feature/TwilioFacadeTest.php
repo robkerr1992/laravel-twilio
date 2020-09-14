@@ -1,6 +1,6 @@
 <?php
 
-namespace Rksugarfree\Twilio\Tests\Feature;
+namespace Aloha\Twilio\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
 
