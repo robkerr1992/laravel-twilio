@@ -2,6 +2,8 @@
 
 namespace Rksugarfree\Twilio;
 
+use Rksugarfree\Twilio\Interfaces\CallResponse;
+use Rksugarfree\Twilio\Interfaces\MessageResponse;
 use Twilio\Rest\Api;
 use Twilio\Rest\Api\V2010;
 use Twilio\Rest\Api\V2010\Account\CallInstance;
@@ -10,20 +12,24 @@ use Twilio\Rest\Client;
 
 class TwilioFake extends Twilio
 {
-    public function call(string $to, $message, array $params = []): CallInstance
+    public function call(string $to, $message, array $params = []): CallResponse
     {
-        return new CallInstance($this->v2010ApiClient(), [
+        $call = new CallInstance($this->v2010ApiClient(), [
             'to' => $to,
             'from' => $params['from'] ?? $this->from,
         ], $this->sid);
+
+        return new TwilioCallResponse($call);
     }
 
-    public function message(string $to, string $message, array $mediaUrls = [], array $params = []): MessageInstance
+    public function message(string $to, string $message, array $mediaUrls = [], array $params = []): MessageResponse
     {
-        return new MessageInstance($this->v2010ApiClient(), [
+        $message = new MessageInstance($this->v2010ApiClient(), [
             'to' => $to,
             'from' => $params['from'] ?? $this->from,
         ], $this->sid);
+
+        return new TwilioSmsResponse($message);
     }
 
     public function getClient(): Client

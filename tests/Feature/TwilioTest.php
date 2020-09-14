@@ -4,7 +4,9 @@ namespace Rksugarfree\Twilio\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
 use Rksugarfree\Twilio\Twilio;
+use Rksugarfree\Twilio\TwilioCallResponse;
 use Rksugarfree\Twilio\TwilioFake;
+use Rksugarfree\Twilio\TwilioSmsResponse;
 use Twilio\Rest\Api\V2010\Account\CallInstance;
 use Twilio\Rest\Api\V2010\Account\MessageInstance;
 use Twilio\Rest\Client;
@@ -33,7 +35,8 @@ class TwilioTest extends TestCase
         $twilio = new TwilioFake('nonsense', 'nonsense','+12223334444');
         $message = $twilio->call('+12224445555', 'Imma message', ['from' => '+15554443333']);
 
-        $this->assertTrue($message instanceof CallInstance);
+        $this->assertTrue($message instanceof TwilioCallResponse);
+        $this->assertTrue($message->get() instanceof CallInstance);
     }
 
 
@@ -43,7 +46,8 @@ class TwilioTest extends TestCase
         $twilio = new TwilioFake('nonsense', 'nonsense','+12223334444');
         $message = $twilio->message('+12224445555', 'Imma message', [], ['from' => '+15554443333']);
 
-        $this->assertTrue($message instanceof MessageInstance);
+        $this->assertTrue($message instanceof TwilioSmsResponse);
+        $this->assertTrue($message->get() instanceof MessageInstance);
     }
 
     private function getTwilio(): Twilio
