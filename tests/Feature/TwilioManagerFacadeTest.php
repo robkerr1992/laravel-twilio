@@ -3,11 +3,26 @@
 namespace Rksugarfree\Twilio\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
+use Rksugarfree\Twilio\Interfaces\ClientManager;
+use Rksugarfree\Twilio\Interfaces\CommunicationsClient;
 use Rksugarfree\Twilio\Twilio;
 use Rksugarfree\Twilio\TwilioManager;
 
 class TwilioManagerFacadeTest extends TestCase
 {
+    /** @test */
+    public function it_can_initialize()
+    {
+        $manager = new TwilioManager(['twilio' => [
+            'sid' => 'fake_sid',
+            'token' => 'fake_token',
+            'from' => '+12223334444',
+        ]], 'twilio');
+
+        $this->assertTrue($manager instanceof TwilioManager);
+        $this->assertTrue($manager instanceof ClientManager);
+    }
+
     /** @test */
     public function it_gives_access_to_default_connection()
     {
@@ -18,6 +33,7 @@ class TwilioManagerFacadeTest extends TestCase
         ]], 'twilio');
 
         $this->assertTrue($manager->defaultConnection() instanceof Twilio);
+        $this->assertTrue($manager->defaultConnection() instanceof CommunicationsClient);
     }
 
     /** @test */
@@ -30,6 +46,7 @@ class TwilioManagerFacadeTest extends TestCase
         ]], 'twilio');
 
         $this->assertTrue($manager->from('other-connection') instanceof Twilio);
+        $this->assertTrue($manager->from('other-connection') instanceof CommunicationsClient);
     }
 
     /** @test */
