@@ -11,11 +11,11 @@ class TwilioManagerFacadeTest extends TestCase
     /** @test */
     public function it_gives_access_to_default_connection()
     {
-        $manager = new TwilioManager('twilio', ['twilio' => [
+        $manager = new TwilioManager(['twilio' => [
             'sid' => 'fake_sid',
             'token' => 'fake_token',
             'from' => '222-222-2222',
-        ]]);
+        ]], 'twilio');
 
         $this->assertTrue($manager->defaultConnection() instanceof Twilio);
     }
@@ -23,12 +23,34 @@ class TwilioManagerFacadeTest extends TestCase
     /** @test */
     public function it_gives_access_to_other_connections()
     {
-        $manager = new TwilioManager('twilio', ['other-connection' => [
+        $manager = new TwilioManager(['other-connection' => [
             'sid' => 'fake_sid',
             'token' => 'fake_token',
             'from' => '222-222-2222',
-        ]]);
+        ]], 'twilio');
 
         $this->assertTrue($manager->from('other-connection') instanceof Twilio);
+    }
+
+    /** @test */
+    public function it_throws_an_invalid_argument_exception_when_configuration_is_empty()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        new TwilioManager([], 'twilio');
+    }
+
+    /** @test */
+    public function it_throws_an_invalid_argument_exception_when_accessing_configuration_that_doesnt_exist()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        $manager = new TwilioManager(['twilio' => [
+            'sid' => 'fake_sid',
+            'token' => 'fake_token',
+            'from' => '222-222-2222',
+        ]], 'twilio');
+
+        $manager->from('doesnt-exist');
     }
 }
