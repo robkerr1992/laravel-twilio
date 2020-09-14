@@ -2,10 +2,11 @@
 
 namespace Rksugarfree\Twilio;
 
+use Rksugarfree\Twilio\Interfaces\ClientManager;
 use Rksugarfree\Twilio\Interfaces\CommunicationsClient;
 use InvalidArgumentException;
 
-class TwilioManager
+class TwilioManager implements ClientManager
 {
     /* @var string */
     private $default;
