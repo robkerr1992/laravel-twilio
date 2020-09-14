@@ -11,21 +11,25 @@ class TwilioManager
     private $default;
 
     /* @var array */
-    private $settings;
+    private $configuration;
 
-    public function __construct(string $default = 'twilio', array $settings = [])
+    public function __construct(array $configuration, string $default = 'twilio')
     {
+        if(empty($configuration)) {
+            throw new InvalidArgumentException("TwilioManager settings cannot be empty.");
+        }
+
+        $this->configuration = $configuration;
         $this->default = $default;
-        $this->settings = $settings ?? config('clients');
     }
 
     public function from(string $connection): CommunicationsClient
     {
-        if (empty($this->settings[$connection])) {
+        if (empty($this->configuration[$connection])) {
             throw new InvalidArgumentException("Connection \"{$connection}\" is not configured.");
         }
 
-        $settings = $this->settings[$connection];
+        $settings = $this->configuration[$connection];
 
         return new Twilio($settings['sid'], $settings['token'], $settings['from']);
     }
