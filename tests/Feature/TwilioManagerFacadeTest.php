@@ -14,7 +14,7 @@ class TwilioManagerFacadeTest extends TestCase
         $manager = new TwilioManager(['twilio' => [
             'sid' => 'fake_sid',
             'token' => 'fake_token',
-            'from' => '222-222-2222',
+            'from' => '+12223334444',
         ]], 'twilio');
 
         $this->assertTrue($manager->defaultConnection() instanceof Twilio);
@@ -26,7 +26,7 @@ class TwilioManagerFacadeTest extends TestCase
         $manager = new TwilioManager(['other-connection' => [
             'sid' => 'fake_sid',
             'token' => 'fake_token',
-            'from' => '222-222-2222',
+            'from' => '+12223334444',
         ]], 'twilio');
 
         $this->assertTrue($manager->from('other-connection') instanceof Twilio);
@@ -48,7 +48,7 @@ class TwilioManagerFacadeTest extends TestCase
         $manager = new TwilioManager(['twilio' => [
             'sid' => 'fake_sid',
             'token' => 'fake_token',
-            'from' => '222-222-2222',
+            'from' => '+12223334444',
         ]], 'twilio');
 
         $manager->from('doesnt-exist');
