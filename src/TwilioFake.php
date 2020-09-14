@@ -12,6 +12,14 @@ use Twilio\Rest\Client;
 
 class TwilioFake extends Twilio
 {
+    public function __construct()
+    {
+        $this->sid = 'nonsense';
+        $this->token = 'nonsense';
+        $this->from = '+12223334444';
+        $this->sslVerify = false;
+    }
+
     public function call(string $to, $message, array $params = []): CallResponse
     {
         $call = new CallInstance($this->v2010ApiClient(), [

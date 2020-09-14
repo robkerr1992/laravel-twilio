@@ -32,7 +32,7 @@ class TwilioTest extends TestCase
     /** @test */
     public function it_can_make_calls()
     {
-        $twilio = new TwilioFake('nonsense', 'nonsense','+12223334444');
+        $twilio = new TwilioFake();
         $message = $twilio->call('+12224445555', 'Imma message', ['from' => '+15554443333']);
 
         $this->assertTrue($message instanceof TwilioCallResponse);
@@ -43,7 +43,7 @@ class TwilioTest extends TestCase
     /** @test */
     public function it_can_make_messages()
     {
-        $twilio = new TwilioFake('nonsense', 'nonsense','+12223334444');
+        $twilio = new TwilioFake();
         $message = $twilio->message('+12224445555', 'Imma message', [], ['from' => '+15554443333']);
 
         $this->assertTrue($message instanceof TwilioSmsResponse);
