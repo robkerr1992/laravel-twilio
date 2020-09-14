@@ -49,7 +49,7 @@
                 "Rksugarfree\\Twilio\\Support\\Laravel\\ServiceProvider"
             ],
             "aliases": {
-                "Twilio": "Rksugarfree\\Twilio\\Support\\Laravel\\Facade"
+                "TwilioManager": "Rksugarfree\\Twilio\\Support\\Laravel\\Facade"
             }
         }
     }
