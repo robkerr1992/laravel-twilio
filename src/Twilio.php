@@ -2,9 +2,9 @@
 
 namespace Rksugarfree\Twilio;
 
+use Rksugarfree\Twilio\Interfaces\CallResponse;
+use Rksugarfree\Twilio\Interfaces\MessageResponse;
 use Rksugarfree\Twilio\Interfaces\CommunicationsClient;
-use Twilio\Rest\Api\V2010\Account\CallInstance;
-use Twilio\Rest\Api\V2010\Account\MessageInstance;
 use Twilio\Rest\Client;
 use Twilio\TwiML\TwiML;
 use Twilio\TwiML\VoiceResponse;
@@ -45,7 +45,7 @@ class Twilio implements CommunicationsClient
         string $message,
         array $mediaUrls = [],
         array $params = []
-    ): MessageInstance
+    ): MessageResponse
     {
         $params['body'] = $message;
 
@@ -57,14 +57,16 @@ class Twilio implements CommunicationsClient
             $params['mediaUrl'] = $mediaUrls;
         }
 
-        return $this->getClient()->messages->create($to, $params);
+        return new TwilioSmsResponse(
+            $this->getClient()->messages->create($to, $params)
+        );
     }
 
     /*
      * @param callable|string|TwiML $message
      * @see https://www.twilio.com/docs/api/voice/making-calls Documentation
      */
-    public function call(string $to, $message, array $params = []): CallInstance
+    public function call(string $to, $message, array $params = []): CallResponse
     {
         if (is_callable($message)) {
             $message = $this->twiml($message);
@@ -78,10 +80,8 @@ class Twilio implements CommunicationsClient
 
         $from = $params['from'] ?? $this->from;
 
-        return $this->getClient()->calls->create(
-            $to,
-            $from,
-            $params
+        return new TwilioCallResponse(
+            $this->getClient()->calls->create($to, $from, $params)
         );
     }
 

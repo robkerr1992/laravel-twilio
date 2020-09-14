@@ -2,7 +2,10 @@
 
 namespace Rksugarfree\Twilio;
 
+use Rksugarfree\Twilio\Interfaces\CallResponse;
+use Rksugarfree\Twilio\Interfaces\MessageResponse;
 use Rksugarfree\Twilio\Interfaces\CommunicationsClient;
+use Rksugarfree\Twilio\Interfaces\Sms;
 use Twilio\Rest\Api;
 use Twilio\Rest\Api\V2010;
 use Twilio\Rest\Api\V2010\Account\CallInstance;
@@ -11,14 +14,18 @@ use Twilio\Rest\Client;
 
 class TwilioFake implements CommunicationsClient
 {
-    public function call(string $to, $message, array $params = []): CallInstance
+    public function call(string $to, $message, array $params = []): CallResponse
     {
-        return new CallInstance($this->v2010ApiClient(), [], '');
+        return new TwilioCallResponse(
+            new CallInstance($this->v2010ApiClient(), [], '')
+        );
     }
 
-    public function message(string $to, string $message, array $mediaUrls = [], array $params = []): MessageInstance
+    public function message(string $to, string $message, array $mediaUrls = [], array $params = []): MessageResponse
     {
-        return new MessageInstance($this->v2010ApiClient(), [], '');
+        return new TwilioSmsResponse(
+            new MessageInstance($this->v2010ApiClient(), [], '')
+        );
     }
 
     private function v2010ApiClient(): V2010
