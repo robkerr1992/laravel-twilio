@@ -1,5 +1,5 @@
 {
-    "name": "rksugarfree/twilio",
+    "name": "rksugarfree/laravel-twilio",
     "description": "Extendable Phone Messaging interface for Laravel with default Twilio implementation.",
     "type": "library",
     "keywords": ["sms", "ivr", "laravel", "twilio"],
