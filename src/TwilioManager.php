@@ -32,7 +32,7 @@ class TwilioManager implements ClientManager
 
         $settings = $this->configuration[$connection];
 
-        return new Twilio($settings['sid'], $settings['token'], $settings['from']);
+        return new TwilioClient($settings['sid'], $settings['token'], $settings['from']);
     }
 
     public function defaultConnection(): CommunicationsClient

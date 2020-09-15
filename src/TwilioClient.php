@@ -9,7 +9,7 @@ use Twilio\Rest\Client;
 use Twilio\TwiML\TwiML;
 use Twilio\TwiML\VoiceResponse;
 
-class Twilio implements CommunicationsClient
+class TwilioClient implements CommunicationsClient
 {
     /* @var string */
     protected $sid;

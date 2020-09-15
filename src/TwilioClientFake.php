@@ -10,7 +10,7 @@ use Twilio\Rest\Api\V2010\Account\CallInstance;
 use Twilio\Rest\Api\V2010\Account\MessageInstance;
 use Twilio\Rest\Client;
 
-class TwilioFake extends Twilio
+class TwilioClientFake extends TwilioClient
 {
     public function __construct()
     {

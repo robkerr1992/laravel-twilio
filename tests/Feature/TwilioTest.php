@@ -3,9 +3,9 @@
 namespace Rksugarfree\Twilio\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use Rksugarfree\Twilio\Twilio;
+use Rksugarfree\Twilio\TwilioClient;
 use Rksugarfree\Twilio\TwilioCallResponse;
-use Rksugarfree\Twilio\TwilioFake;
+use Rksugarfree\Twilio\TwilioClientFake;
 use Rksugarfree\Twilio\TwilioSmsResponse;
 use Twilio\Rest\Api\V2010\Account\CallInstance;
 use Twilio\Rest\Api\V2010\Account\MessageInstance;
@@ -18,7 +18,7 @@ class TwilioTest extends TestCase
     {
         $manager = $this->getTwilio();
 
-        $this->assertTrue($manager instanceof Twilio);
+        $this->assertTrue($manager instanceof TwilioClient);
     }
 
     /** @test */
@@ -32,7 +32,7 @@ class TwilioTest extends TestCase
     /** @test */
     public function it_can_make_calls()
     {
-        $twilio = new TwilioFake();
+        $twilio = new TwilioClientFake();
         $message = $twilio->call('+12224445555', 'Imma message', ['from' => '+15554443333']);
 
         $this->assertTrue($message instanceof TwilioCallResponse);
@@ -43,15 +43,15 @@ class TwilioTest extends TestCase
     /** @test */
     public function it_can_make_messages()
     {
-        $twilio = new TwilioFake();
+        $twilio = new TwilioClientFake();
         $message = $twilio->message('+12224445555', 'Imma message', [], ['from' => '+15554443333']);
 
         $this->assertTrue($message instanceof TwilioSmsResponse);
         $this->assertTrue($message->get() instanceof MessageInstance);
     }
 
-    private function getTwilio(): Twilio
+    private function getTwilio(): TwilioClient
     {
-        return new Twilio('fake_sid', 'fake_token','+12223334444');
+        return new TwilioClient('fake_sid', 'fake_token','+12223334444');
     }
 }
