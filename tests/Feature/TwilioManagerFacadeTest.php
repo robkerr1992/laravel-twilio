@@ -1,12 +1,12 @@
 <?php
 
-namespace Rksugarfree\Twilio\Tests\Feature;
+namespace Rksugarfree\MessageManager\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use Rksugarfree\Twilio\Interfaces\ClientManager;
-use Rksugarfree\Twilio\Interfaces\CommunicationsClient;
-use Rksugarfree\Twilio\TwilioClient;
-use Rksugarfree\Twilio\TwilioManager;
+use Rksugarfree\MessageManager\Interfaces\ClientManager;
+use Rksugarfree\MessageManager\Interfaces\CommunicationsClient;
+use Rksugarfree\MessageManager\Twilio\TwilioClient;
+use Rksugarfree\MessageManager\Twilio\TwilioManager;
 
 class TwilioManagerFacadeTest extends TestCase
 {

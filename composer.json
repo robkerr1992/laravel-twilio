@@ -1,5 +1,5 @@
 {
-    "name": "rksugarfree/laravel-messaging-manager",
+    "name": "rksugarfree/phone-message-manager",
     "description": "Extendable Phone Messaging interface for Laravel with default Twilio implementation.",
     "type": "library",
     "keywords": ["sms", "ivr", "laravel", "twilio"],
@@ -29,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rksugarfree\\Twilio\\": "src/"
+            "Rksugarfree\\MessageManager\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rksugarfree\\Twilio\\Tests\\": "tests/"
+            "Rksugarfree\\MessageManager\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -46,7 +46,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Rksugarfree\\Twilio\\Support\\Laravel\\ServiceProvider"
+                "Rksugarfree\\MessageManager\\Support\\Laravel\\ServiceProvider"
             ],
             "aliases": {
                 "Twilio": "Twilio"

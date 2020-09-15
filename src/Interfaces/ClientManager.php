@@ -1,6 +1,6 @@
 <?php
 
-namespace Rksugarfree\Twilio\Interfaces;
+namespace Rksugarfree\MessageManager\Interfaces;
 
 interface ClientManager
 {

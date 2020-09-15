@@ -1,9 +1,9 @@
 <?php
 
-namespace Rksugarfree\Twilio;
+namespace Rksugarfree\MessageManager\Twilio;
 
-use Rksugarfree\Twilio\Interfaces\ClientManager;
-use Rksugarfree\Twilio\Interfaces\CommunicationsClient;
+use Rksugarfree\MessageManager\Interfaces\ClientManager;
+use Rksugarfree\MessageManager\Interfaces\CommunicationsClient;
 use InvalidArgumentException;
 
 class TwilioManager implements ClientManager

@@ -1,12 +1,12 @@
 <?php
 
-namespace Rksugarfree\Twilio\Tests\Feature;
+namespace Rksugarfree\MessageManager\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use Rksugarfree\Twilio\TwilioClient;
-use Rksugarfree\Twilio\TwilioCallResponse;
-use Rksugarfree\Twilio\TwilioClientFake;
-use Rksugarfree\Twilio\TwilioSmsResponse;
+use Rksugarfree\MessageManager\Twilio\TwilioClient;
+use Rksugarfree\MessageManager\Twilio\TwilioCallResponse;
+use Rksugarfree\MessageManager\Twilio\TwilioClientFake;
+use Rksugarfree\MessageManager\Twilio\TwilioSmsResponse;
 use Twilio\Rest\Api\V2010\Account\CallInstance;
 use Twilio\Rest\Api\V2010\Account\MessageInstance;
 use Twilio\Rest\Client;

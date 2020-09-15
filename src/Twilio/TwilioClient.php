@@ -1,10 +1,10 @@
 <?php
 
-namespace Rksugarfree\Twilio;
+namespace Rksugarfree\MessageManager\Twilio;
 
-use Rksugarfree\Twilio\Interfaces\CallResponse;
-use Rksugarfree\Twilio\Interfaces\MessageResponse;
-use Rksugarfree\Twilio\Interfaces\CommunicationsClient;
+use Rksugarfree\MessageManager\Interfaces\CallResponse;
+use Rksugarfree\MessageManager\Interfaces\MessageResponse;
+use Rksugarfree\MessageManager\Interfaces\CommunicationsClient;
 use Twilio\Rest\Client;
 use Twilio\TwiML\TwiML;
 use Twilio\TwiML\VoiceResponse;

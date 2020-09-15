@@ -1,8 +1,8 @@
 <?php
 
-namespace Rksugarfree\Twilio;
+namespace Rksugarfree\MessageManager\Twilio;
 
-use Rksugarfree\Twilio\Interfaces\CallResponse;
+use Rksugarfree\MessageManager\Interfaces\CallResponse;
 use Twilio\Rest\Api\V2010\Account\CallInstance;
 
 class TwilioCallResponse implements CallResponse

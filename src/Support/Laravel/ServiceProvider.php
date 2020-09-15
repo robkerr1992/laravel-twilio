@@ -1,8 +1,8 @@
 <?php
 
-namespace Rksugarfree\Twilio\Support\Laravel;
+namespace Rksugarfree\MessageManager\Support\Laravel;
 
-use Rksugarfree\Twilio\TwilioManager;
+use Rksugarfree\MessageManager\Twilio\TwilioManager;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
