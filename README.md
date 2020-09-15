@@ -1,6 +1,6 @@
 laravel-twilio
 ===============
-Laravel Twilio API Integration
+Laravel Messaging API Integrations
 
 [![License](https://img.shields.io/github/license/aloha/laravel-twilio?style=flat-square)](#license)
 
@@ -12,10 +12,10 @@ composer require rksugarfree/laravel-twilio
 
 #### Facade
 
-The default TwilioManager facade is available to you:
+The default Twilio facade is available to you:
 
 ```php
-use TwilioManager;
+use Twilio;
 ```
 
 ### Interfaces
@@ -61,19 +61,19 @@ return [
 ];
 ```
 
-### Usage of the default TwilioManager
+### Usage of the default Twilio Facade
 
-To access the default Twilio implementation call the TwilioManager facade using the default connection. Since it's a facade
+To access the default Twilio implementation call the Twilio facade using the default connection. Since it's a facade
 you should access the methods statically:
 
 ```php
-$twilio = TwilioManager::defaultConnection();
+$twilio = Twilio::defaultConnection();
 ```
 
 If you want to access a different connection from the Manager you can do this:
 
 ```php
-$twilio = TwilioManager::from("{$keyInClientsConfig}");
+$twilio = Twilio::from("{$keyInClientsConfig}");
 ```
 
 Sending a text message:
