@@ -4,7 +4,7 @@ namespace Rksugarfree\Twilio\Support\Laravel;
 
 use Illuminate\Support\Facades\Facade as BaseFacade;
 
-class Facade extends BaseFacade
+class Twilio extends BaseFacade
 {
     /**
      * Get the registered name of the component.
