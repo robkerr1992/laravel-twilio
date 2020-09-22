@@ -1,3 +1,7 @@
+THIS REPO IS ARCHIVED
+I have plans to make a Bandwidth.com integration in the future but it will be seperate from this project
+
+
 laravel-twilio
 ===============
 Laravel Twilio API Integration
